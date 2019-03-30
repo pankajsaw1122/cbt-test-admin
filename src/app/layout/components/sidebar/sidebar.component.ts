@@ -11,7 +11,6 @@ export class SidebarComponent {
     pushRightClass: string = 'push-right';
 
     constructor(public router: Router) {
-    
         this.router.events.subscribe(val => {
             if (
                 val instanceof NavigationEnd &&

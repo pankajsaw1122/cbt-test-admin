@@ -76,4 +76,71 @@ export class ApiService {
     }).pipe(map((res) => res), catchError(this.handleError));
   }
 
+  getQuesType() {
+    return this.http.get(this.apiUrl + 'ques/getQuesType', {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+
+  addQuestion(data) {
+    return this.http.post(this.apiUrl + 'ques/addQues', data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+
+  updateQuestion(data) {
+    return this.http.post(this.apiUrl + 'ques/updateQues', data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+
+  getQuesData(data) {
+    return this.http.get(this.apiUrl + 'ques/getQuesData?id=' + data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+  deleteQues(data) {
+    return this.http.delete(this.apiUrl + 'ques/deleteQues?id=' + data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+  addCandidate(data) {
+    return this.http.post(this.apiUrl + 'candidate/addCandt', data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+
+  getCandidatesData(data) {
+    return this.http.get(this.apiUrl + 'candidate/getCandtData?id=' + data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+
+  updateCandidateData(data) {
+    return this.http.post(this.apiUrl + 'candidate/updateCandt', data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+  deleteCandidate(data) {
+    return this.http.delete(this.apiUrl + 'candidate/deleteCandt?id=' + data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+
+  allowLogin(data) {
+    return this.http.post(this.apiUrl + 'manageExam/allowLogin', data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+  allowStartExam(data) {
+    return this.http.post(this.apiUrl + 'manageExam/allowStartExam', data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
+
+  getExamStatistics(data) {
+    return this.http.get(this.apiUrl + 'manageExam/getExamInfo?id=' + data, {
+      headers: new HttpHeaders().set('Authorization', localStorage.getItem('authToken'))
+    }).pipe(map((res) => res), catchError(this.handleError));
+  }
 }

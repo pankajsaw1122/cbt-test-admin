@@ -1,21 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { routerTransition } from '../../router.animations';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../../shared/services/api.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import {MatPaginator, MatSort, MatTableDataSource, MatDialog} from '@angular/material';
-import { MatDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
-
+import { MatDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
+import { MatTableDataSource, MatDialog, MatSort, MatPaginator } from '@angular/material';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { Router } from '@angular/router';
 @Component({
-    selector: 'app-exam',
-    templateUrl: './exam.component.html',
-    styleUrls: ['./exam.component.scss'],
+    selector: 'app-questions',
+    templateUrl: './questions.component.html',
+    styleUrls: ['./questions.component.scss'],
     animations: [routerTransition()]
 })
-
-export class ExamComponent implements OnInit {
-    displayedColumns: string[] = ['id', 'exam_name', 'exam_minute', 'total_ques', 'total_marks', 'action'];
-    dataSource: MatTableDataSource<ExamData>;
+export class QuestionsComponent implements OnInit {
+    displayedColumns: string[] = ['id', 'exam_name', 'categ_name', 'type', 'marks', 'neg_mark', 'ques_text', 'action'];
+    dataSource: MatTableDataSource<QuestionsData>;
     submitSuccess = null;
     resultsLength = 0;
     isLoadingResults = true;
@@ -24,7 +21,7 @@ export class ExamComponent implements OnInit {
     constructor(public dialog: MatDialog, private apiService: ApiService, private router: Router) { }
 
     ngOnInit() {
-        this.apiService.getExamData('').subscribe((data: any) => {
+        this.apiService.getQuesData('').subscribe((data: any) => {
             console.log(data);
             if (data.status === 200 || data.status === '200') {
                 console.log('Data fetched successfully');
@@ -57,20 +54,20 @@ export class ExamComponent implements OnInit {
     }
     onEdit(id) {
         console.log('inside edit ' + id);
-        this.router.navigate(['exam/edit-exam/', id]);
+        this.router.navigate(['/questions/edit-questions/', id]);
     }
     openDialog(editId) {
         const dialogRef = this.dialog.open(MatDialogComponent, {
             width: '30%',
-            data: { id: editId, confirmMessage: 'Are you sure you want to delete this exam ?' }
+            data: { id: editId, confirmMessage: 'Are you sure you want to delete this Question ?' }
         });
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);
             if (result === true) {
-                this.apiService.deleteExam(editId).subscribe((data: any) => {
+                this.apiService.deleteQues(editId).subscribe((data: any) => {
                     console.log(data);
                     if (data.status === 200 || data.status === '200') {
-                        console.log('Exam delete successfull');
+                        console.log('Question delete successfull');
                         this.submitSuccess = 1;
                         this.ngOnInit();
                     } else {
@@ -83,10 +80,13 @@ export class ExamComponent implements OnInit {
     }
 }
 
-export interface ExamData {
+export interface QuestionsData {
     id: string;
     exam_name: string;
-    exam_minute: string;
-    total_ques: number;
-    total_marks: number;
+    categ_name: string;
+    type: string;
+    marks: number;
+    neg_mark: number;
+    ques_text: string;
+
   }

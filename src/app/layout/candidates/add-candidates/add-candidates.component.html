@@ -1,0 +1,113 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="pageHeading" [icon]="'fa-edit'"></app-page-header>
+  <div class="row form-outer">
+    <div class="card">
+      <div class="card-header">
+        {{ pageHeading }}
+      </div>
+      <div class="card-block">
+        <form [formGroup]="candtForm" (ngSubmit)="onSubmit()" class="form-size">
+          <div class="Container fluid">
+            <div class="row form-inner">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input type="text" matInput formControlName="fname">
+                  </mat-form-field>
+                  <mat-error>
+                    <span *ngIf="!candtForm.get('fname').valid && candtForm.get('fname').touched">
+                      <span *ngIf="candtForm.get('fname').errors['required']">Please enter First Name of candidate
+                      </span>
+                    </span>
+                  </mat-error>
+                </div>
+                
+                <div class="form-group">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Roll No</mat-label>
+                      <input type="text" matInput formControlName="roll_no">
+                    </mat-form-field>
+                    <mat-error>
+                      <span *ngIf="!candtForm.get('roll_no').valid && candtForm.get('roll_no').touched">
+                        <span *ngIf="candtForm.get('roll_no').errors['required']">Please enter Class of Applicant
+                        </span>
+                      </span>
+                    </mat-error>
+                  </div>
+                
+                <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email-ID</mat-label>
+                  <input type="email" matInput formControlName="email">
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="!candtForm.get('email').valid && candtForm.get('email').touched">
+                    <span *ngIf="candtForm.get('email').errors['required']">Please enter valid email id
+                    </span>
+                  </span>
+                </mat-error>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input type="text" matInput formControlName="lname">
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="!candtForm.get('lname').valid && candtForm.get('lname').touched">
+                    <span *ngIf="candtForm.get('lname').errors['required']">Please enter Last Name
+                    </span>
+                  </span>
+                </mat-error>
+              </div>
+
+              <div class="form-group">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Select Class</mat-label>
+                    <mat-select [(value)]="candtForm.value.classes" formControlName="classes">
+                      <mat-option value="">Select Class</mat-option>
+                      <mat-option value="IIX">IIX</mat-option>
+                      <mat-option value="IX">IX</mat-option>
+                      <mat-option value="X">X</mat-option>
+                      <mat-option value="XI">XI</mat-option>
+                      <mat-option value="XII">XII</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-error>
+                    <span *ngIf="!candtForm.get('classes').valid && candtForm.get('classes').touched">
+                      <span *ngIf="candtForm.get('classes').errors['required']">Please select Class</span>
+                    </span>
+                  </mat-error>
+                </div>
+
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Mobile No</mat-label>
+                  <input type="number" matInput formControlName="mobile_no">
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="!candtForm.get('mobile_no').valid && candtForm.get('mobile_no').touched">
+                    <span *ngIf="candtForm.get('mobile_no').errors['required']">Please enter Mobile No
+                    </span>
+                  </span>
+                </mat-error>
+              </div>
+            </div>
+          </div>
+          <div class="button-row">
+            <button mat-raised-button [disabled]="!candtForm.valid" color="primary">{{ btnText }}</button>
+            &nbsp;&nbsp;
+            <!-- [disabled]="!categForm.valid" -->
+            <button routerLink="/candidates" mat-raised-button color="warn">Cancel</button>
+            <p *ngIf="submitSuccess == 1" class="success">{{ successMsg }}</p>
+            <p *ngIf="submitSuccess == 0" class="failed"> Failed to submit data please try again later</p>
+          </div>
+      </div>
+      </form>
+    </div>
+  </div>
+  <br>
+</div>
+</div>

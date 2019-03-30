@@ -10,8 +10,6 @@
           <div class="Container fluid">
             <div class="row form-inner">
               <div class="col-lg-6 col-md-6 col-sm-12">
-                <mat-label>...</mat-label>
-
                 <div class="form-group">
                   <mat-form-field appearance="outline">
                     <mat-label>Exam Name</mat-label>
@@ -25,157 +23,19 @@
                   </mat-error>
                 </div>
                 <div class="form-group">
-                  <mat-form-field appearance="outline">
-                      <mat-label>Select Class</mat-label>
-                    <mat-select [(value)]="examForm.value.classes" formControlName="classes">
-                      <mat-option value="">Select Class*</mat-option>
-                      <mat-option value="IIX">IIX</mat-option>
-                      <mat-option value="IX">IX</mat-option>
-                      <mat-option value="X">X</mat-option>
-                      <mat-option value="XI">XI</mat-option>
-                      <mat-option value="XII">XII</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <mat-error>
-                    <span *ngIf="!examForm.get('classes').valid && examForm.get('classes').touched">
-                      <span *ngIf="examForm.get('classes').errors['required']">Please select Class</span>
-                    </span>
-                  </mat-error>
-                </div>
-
-
-                <div class="form-group">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Exam Date</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="examDate" readonly>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                  <mat-error>
-                    <span *ngIf="!examForm.get('examDate').valid && examForm.get('examDate').touched">
-                      <span *ngIf="examForm.get('examDate').errors['required']">Please enter Date of
-                        admission</span>
-                    </span>
-                  </mat-error>
-                </div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Total Questions</mat-label>
+                      <input type="number" matInput formControlName="totalQues">
+                    </mat-form-field>
+                    <mat-error>
+                      <span *ngIf="!examForm.get('totalQues').valid && examForm.get('totalQues').touched">
+                        <span *ngIf="examForm.get('totalQues').errors['required']">Please enter student name
+                        </span>
+                      </span>
+                    </mat-error>
+                  </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12">
-                <mat-label>Exam Time</mat-label>
-
-                <div class="row">
-                  <div class="col-6">
-                    <div class="form-group">
-                      <mat-form-field appearance="outline">
-                        <mat-select [(value)]="examForm.value.examHour" formControlName="examHour">
-                          <mat-option value="">Hr</mat-option>
-                          <mat-option value="01">01</mat-option>
-                          <mat-option value="02">02</mat-option>
-                          <mat-option value="03">03</mat-option>
-                          <mat-option value="04">04</mat-option>
-                          <mat-option value="05">05</mat-option>
-                          <mat-option value="06">06</mat-option>
-                          <mat-option value="07">07</mat-option>
-                          <mat-option value="08">08</mat-option>
-                          <mat-option value="09">09</mat-option>
-                          <mat-option value="10">10</mat-option>
-                          <mat-option value="11">11</mat-option>
-                          <mat-option value="12">12</mat-option>
-                          <mat-option value="13">13</mat-option>
-                          <mat-option value="14">14</mat-option>
-                          <mat-option value="15">15</mat-option>
-                          <mat-option value="16">16</mat-option>
-                          <mat-option value="17">17</mat-option>
-                          <mat-option value="18">18</mat-option>
-                          <mat-option value="19">19</mat-option>
-                          <mat-option value="20">20</mat-option>
-                          <mat-option value="21">21</mat-option>
-                          <mat-option value="22">22</mat-option>
-                          <mat-option value="23">23</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                      <mat-error>
-                        <span *ngIf="!examForm.get('examHour').valid && examForm.get('examHour').touched">
-                          <span *ngIf="examForm.get('examHour').errors['required']">Please select Class</span>
-                        </span>
-                      </mat-error>
-                    </div>
-                  </div>
-
-                  <div class="col-6">
-                    <div class="form-group">
-                      <mat-form-field appearance="outline">
-                        <mat-select [(value)]="examForm.value.examMin" formControlName="examMin">
-                          <mat-option value="">Min</mat-option>
-                          <mat-option value="01">00</mat-option>
-                          <mat-option value="01">01</mat-option>
-                          <mat-option value="02">02</mat-option>
-                          <mat-option value="03">03</mat-option>
-                          <mat-option value="04">04</mat-option>
-                          <mat-option value="05">05</mat-option>
-                          <mat-option value="06">06</mat-option>
-                          <mat-option value="07">07</mat-option>
-                          <mat-option value="08">08</mat-option>
-                          <mat-option value="09">09</mat-option>
-                          <mat-option value="10">10</mat-option>
-                          <mat-option value="11">11</mat-option>
-                          <mat-option value="12">12</mat-option>
-                          <mat-option value="13">13</mat-option>
-                          <mat-option value="14">14</mat-option>
-                          <mat-option value="15">15</mat-option>
-                          <mat-option value="16">16</mat-option>
-                          <mat-option value="17">17</mat-option>
-                          <mat-option value="18">18</mat-option>
-                          <mat-option value="19">19</mat-option>
-                          <mat-option value="20">20</mat-option>
-                          <mat-option value="21">21</mat-option>
-                          <mat-option value="22">22</mat-option>
-                          <mat-option value="23">23</mat-option>
-                          <mat-option value="24">24</mat-option>
-                          <mat-option value="25">25</mat-option>
-                          <mat-option value="26">26</mat-option>
-                          <mat-option value="27">27</mat-option>
-                          <mat-option value="28">28</mat-option>
-                          <mat-option value="29">29</mat-option>
-                          <mat-option value="30">30</mat-option>
-                          <mat-option value="31">31</mat-option>
-                          <mat-option value="32">32</mat-option>
-                          <mat-option value="33">33</mat-option>
-                          <mat-option value="34">34</mat-option>
-                          <mat-option value="35">35</mat-option>
-                          <mat-option value="36">36</mat-option>
-                          <mat-option value="37">37</mat-option>
-                          <mat-option value="38">38</mat-option>
-                          <mat-option value="39">39</mat-option>
-                          <mat-option value="40">40</mat-option>
-                          <mat-option value="41">41</mat-option>
-                          <mat-option value="42">42</mat-option>
-                          <mat-option value="43">43</mat-option>
-                          <mat-option value="44">44</mat-option>
-                          <mat-option value="45">45</mat-option>
-                          <mat-option value="46">46</mat-option>
-                          <mat-option value="47">47</mat-option>
-                          <mat-option value="48">48</mat-option>
-                          <mat-option value="49">49</mat-option>
-                          <mat-option value="50">50</mat-option>
-                          <mat-option value="51">51</mat-option>
-                          <mat-option value="52">52</mat-option>
-                          <mat-option value="53">53</mat-option>
-                          <mat-option value="54">54</mat-option>
-                          <mat-option value="55">55</mat-option>
-                          <mat-option value="56">56</mat-option>
-                          <mat-option value="57">57</mat-option>
-                          <mat-option value="58">58</mat-option>
-                          <mat-option value="59">59</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                      <mat-error>
-                        <span *ngIf="!examForm.get('examHour').valid && examForm.get('examHour').touched">
-                          <span *ngIf="examForm.get('examHour').errors['required']">Please select Class</span>
-                        </span>
-                      </mat-error>
-                    </div>
-                  </div>
-                </div>
 
                 <div class="form-group">
                   <mat-form-field appearance="outline">
@@ -189,7 +49,6 @@
                     </span>
                   </mat-error>
                 </div>
-
                 <div class="form-group">
                     <mat-form-field appearance="outline">
                       <mat-label>Total Marks</mat-label>

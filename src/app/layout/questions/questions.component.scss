@@ -86,7 +86,12 @@ table {
   }
   
   td, th {
-    width: 17%;
+    width: 13%;
+  }
+
+  .mat-column-ques_text {
+    padding: 12px;
+    // min-width: 120px !important;
   }
 
   .action-icon {
