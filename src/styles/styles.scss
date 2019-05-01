@@ -5,7 +5,8 @@
 @import "rtl";
 @import "responsive";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
+@import '~material-design-icons/iconfont/material-icons.css';
+@import '~katex/dist/katex.css';
 
 .loading-shade {
   position: absolute;

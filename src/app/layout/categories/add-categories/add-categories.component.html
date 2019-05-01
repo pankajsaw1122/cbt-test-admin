@@ -69,8 +69,8 @@
                 <button mat-raised-button [disabled]="!categForm.valid" color="primary">{{ btnText }}</button> &nbsp;&nbsp;
                 <!-- [disabled]="!categForm.valid" -->
                 <button routerLink="/categories" mat-raised-button color="warn">Cancel</button>
-                <p *ngIf="submitSuccess == 1" class="success">{{ successMsg }}</p>
-                <p *ngIf="submitSuccess == 0" class="failed"> Failed to submit data please try again later</p>
+                <p *ngIf="submitSuccess == 1" class="success">{{ successOrFailedMsg }}</p>
+                <p *ngIf="submitSuccess == 0" class="failed">{{successOrFailedMsg}}</p>
               </div>
             </div>
           </form>

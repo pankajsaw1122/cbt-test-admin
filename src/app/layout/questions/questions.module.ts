@@ -6,9 +6,9 @@ import { QuestionsRoutingModule } from './questions-routing.module';
 import { QuestionsComponent } from './questions.component';
 import { PageHeaderModule } from '../../shared';
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
-
+import { CKEditorModule } from 'ng2-ckeditor';
 @NgModule({
-    imports: [CommonModule, QuestionsRoutingModule, PageHeaderModule, MaterialModule, FormsModule, ReactiveFormsModule],
+    imports: [CommonModule, QuestionsRoutingModule, PageHeaderModule, MaterialModule, FormsModule, ReactiveFormsModule, CKEditorModule],
     declarations: [QuestionsComponent, AddQuestionsComponent]
 })
 export class QuestionsModule {}

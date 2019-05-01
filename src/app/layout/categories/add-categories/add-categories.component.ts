@@ -25,7 +25,7 @@ export class AddCategoriesComponent implements OnInit {
   pageHeading = 'Add Category';
   btnText = 'Add';
   submitSuccess = null;
-  successMsg = '';
+  successOrFailedMsg = '';
   constructor(
     private apiService: ApiService,
     private router: Router,
@@ -39,7 +39,7 @@ export class AddCategoriesComponent implements OnInit {
       categName: new FormControl('', [Validators.required]),
       totalMarks: new FormControl('', [Validators.required])
     });
-    this.categForm.value.examId = 6;
+    // this.categForm.value.examId = 6;
     this.apiService.getExamData('').subscribe((data: any) => {
       console.log(data);
       if (data.status === 200 || data.status === '200') {
@@ -83,9 +83,10 @@ export class AddCategoriesComponent implements OnInit {
               this.router.navigate(['/categories']);
             }, 3000);
             this.submitSuccess = 1;
-            this.successMsg = 'Category Created Successfully';
+            this.successOrFailedMsg = 'Category Created Successfully';
           } else {
             this.submitSuccess = 0;
+            this.successOrFailedMsg = data.message;
             console.log('request failed');
           }
         });
@@ -100,9 +101,10 @@ export class AddCategoriesComponent implements OnInit {
               this.router.navigate(['/categories']);
             }, 3000);
             this.submitSuccess = 1;
-            this.successMsg = 'Category Update Successfull';
+            this.successOrFailedMsg = 'Category Update Successfull';
           } else {
             this.submitSuccess = 0;
+            this.successOrFailedMsg = data.message;
             console.log('request failed');
           }
         });

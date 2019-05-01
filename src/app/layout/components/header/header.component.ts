@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+        window.sessionStorage.clear();
+        window.localStorage.clear();
     }
 }
