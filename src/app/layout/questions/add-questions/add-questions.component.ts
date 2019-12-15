@@ -26,12 +26,12 @@ export class AddQuestionsComponent implements OnInit {
   };
 
   quesImages: File = null;
-  name = 'ng2-ckeditor';
+  name = 'ckeditor';
   ckeConfig: any;
 
   mycontent: string;
   log: string = '';
-  @ViewChild('myckeditor') ckeditor: any;
+  @ViewChild('editor') ckeditor: any;
 
   constructor(
     private apiService: ApiService,
@@ -43,19 +43,19 @@ export class AddQuestionsComponent implements OnInit {
   ngOnInit() {
     // configremovePlugins: 'Save,Print,Preview,Find,About,Maximize,ShowBlocks'
 
-    this.ckeConfig = {
-      allowedContent: false,
-      enterMode: 2,
-      extraPlugins: 'divarea',
-      forcePasteAsPlainText: false,
-      height: '120px',
-      toolbarGroups: [
-        // { 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] },
-        { 'name': 'clipboard' },
-        { 'name': 'editing', 'groups': ['find', 'selection', 'spellchecker', 'editing'] },
-      ],
-      // removeButtons:'Source,Save,Templates,Find,Replace,Scayt,SelectAll'
-    };
+    // this.ckeConfig = {
+    //   allowedContent: false,
+    //   enterMode: 2,
+    //   extraPlugins: 'divarea',
+    //   forcePasteAsPlainText: false,
+    //   height: '120px',
+    //   toolbarGroups: [
+    //     // { 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] },
+    //     { 'name': 'clipboard' },
+    //     { 'name': 'editing', 'groups': ['find', 'selection', 'spellchecker', 'editing'] },
+    //   ],
+    //   // removeButtons:'Source,Save,Templates,Find,Replace,Scayt,SelectAll'
+    // };
 
     this.editId = this.paramRoute.snapshot.params['id'];
     this.quesForm = new FormGroup({
@@ -232,14 +232,32 @@ export class AddQuestionsComponent implements OnInit {
         .addQuestion(this.quesForm.value)
         .subscribe((data: any) => {
           if (data.status === 200 || data.status === '200') {
-            setTimeout(() => {
-              this.apiMsg = '';
-              this.submitSuccess = null;
-              this.router
-                .navigateByUrl('/questions', { skipLocationChange: true })
-                .then(() => this.router.navigate(['/questions/add-questions']));
-            }, 1500);
+            this.quesForm.get('quesText').setValue('Enter question text here.....');
+            this.quesForm.get('quesImage').setValue('');
+            this.quesForm.get('choice1').setValue('Please enter first option text here');
+            this.quesForm.get('choice1Image').setValue('');
+            this.quesForm.get('choice2').setValue('Please enter 2nd option text here');
+            this.quesForm.get('choice2Image').setValue('');
+            this.quesForm.get('choice3').setValue('Please enter 3rd option text here');
+            this.quesForm.get('choice3Image').setValue('');
+            this.quesForm.get('choice4').setValue('Please enter 4th option text here');
+            this.quesForm.get('choice4Image').setValue('');
+            this.quesForm.get('choiceA').setValue(false);
+            this.quesForm.get('choiceB').setValue(false);
+            this.quesForm.get('choiceC').setValue(false);
+            this.quesForm.get('choiceD').setValue(false);
+            // setTimeout(() => {
+            //   this.apiMsg = '';
+            //   this.submitSuccess = null;
+            //   this.router
+            //     .navigateByUrl('/questions', { skipLocationChange: true })
+            //     .then(() => this.router.navigate(['/questions/add-questions']));
+            // }, 1500);
             this.submitSuccess = 1;
+            setTimeout(() => {
+              this.submitSuccess = null;
+              this.apiMsg = '';
+            }, 3000);
             this.apiMsg = 'Question added Successfully';
           } else {
             this.submitSuccess = 0;

@@ -16,11 +16,27 @@ export class QuestionsComponent implements OnInit {
     submitSuccess = null;
     resultsLength = 0;
     isLoadingResults = true;
+    name = 'ckeditor';
+    ckeConfig: any;
+    @ViewChild('editor') ckeditor: any;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
     constructor(public dialog: MatDialog, private apiService: ApiService, private router: Router) { }
 
     ngOnInit() {
+        // configremovePlugins: 'Save,Print,Preview,Find,About,Maximize,ShowBlocks';
+
+        this.ckeConfig = {
+            allowedContent: true,
+            type: 'inline',
+            readOnly: true,
+            enterMode: 2,
+            // extraPlugins: 'divarea',
+            forcePasteAsPlainText: false,
+            height: 'auto',
+            toolbarGroups: [
+            ],
+        };
         this.apiService.getQuesData('').subscribe((data: any) => {
             console.log(data);
             if (data.status === 200 || data.status === '200') {
@@ -46,9 +62,9 @@ export class QuestionsComponent implements OnInit {
         console.log('filter working');
         this.dataSource.filter = filterValue.trim().toLowerCase();
         if (this.dataSource.paginator) {
-          this.dataSource.paginator.firstPage();
+            this.dataSource.paginator.firstPage();
         }
-      }
+    }
 
     onSubmit() {
     }
@@ -89,4 +105,4 @@ export interface QuestionsData {
     neg_mark: number;
     ques_text: string;
 
-  }
+}

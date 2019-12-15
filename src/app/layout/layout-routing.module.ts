@@ -13,8 +13,6 @@ const routes: Routes = [
             { path: 'exam', loadChildren: './exam/exam.module#ExamModule' },
             { path: 'categories', loadChildren: './categories/categories.module#CategoriesModule' },
             { path: 'questions', loadChildren: './questions/questions.module#QuestionsModule' },
-            { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
-            { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
             { path: 'student-list', loadChildren: './student-list/student-list.module#StudentListModule' },
             { path: 'result', loadChildren: './result/result.module#ResultModule'}
 

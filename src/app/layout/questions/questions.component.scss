@@ -86,8 +86,14 @@ table {
   }
   
   td, th {
-    width: 13%;
+    padding: 12px !important;
   }
+//   .mat-column-id {
+//     padding: 12px;
+//   }
+//   .mat-column-id {
+//     padding: 12px;
+//   }
 
   .mat-column-ques_text {
     padding: 12px;
@@ -98,3 +104,8 @@ table {
       cursor: pointer;
   }
   
+
+  .cke_top {
+      border: none !important;
+      padding: 0px !important;
+  }
